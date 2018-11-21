@@ -47,11 +47,26 @@ $("#findFood").on("click", function(){
         var resultsFive = response.slice(0,5);
 
         for (var i = 0; i < resultsFive.length; i++){
-            //new div to display the recipe informations: tittle and link
+            //new div to display the recipe informations: title and link
             var recipeLinksHolder = $("<div class='recipeLink'>");
+            //store the ID of the recipe. We will need it to display 
+            var recipeID = resultsFive[i].recipe_id;
+            //store the title of the recipe
+            var recipeTitle = $("<p>").text(resultsFive[i].title);
+            //stores the link of the recipe
+            var recipeLink = $("<p>").text(resultsFive[i].source_url);
 
-            var 
+            //append the recipe informations to the div
+            recipeLinksHolder.append(recipeID);
+            recipeLinksHolder.append(recipeTitle);
+            recipeLinksHolder.append(recipeLink);
+
+            //append the hole recipe to the recipe holder div
+            $("#recipeHolder").prepend(recipeLinksHolder);
         }
+
+
+        //when the user click on a recipe link
 
     });
 
