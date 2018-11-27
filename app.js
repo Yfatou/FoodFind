@@ -119,4 +119,4 @@ var foodSubmit = $("#food-form").submit(function(e) { // change # to .
          GetRecipe();
 });
 
-})
+
