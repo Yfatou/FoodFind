@@ -87,8 +87,6 @@ $(document).ready(function(){
     }
     
 });
-<<<<<<< HEAD
-=======
 var foodSubmit = $("#food-form").submit(function(e) { // change # to .
     var searchTerms = $("#food-input").val(); // you should have #input_name
     console.log("this is the usertext " + searchTerms);
@@ -113,7 +111,7 @@ var foodSubmit = $("#food-form").submit(function(e) { // change # to .
             var recipeingredientLines = response.hits[i].recipe.ingredientLines;
 
             console.log (recipeTest);
-             $( "#foodPlace" ).append( `<div> <p>${recipeTest}</p> ${recipeingredientLines}<div>`);
+             $( "#foodPlace" ).append( `<div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
             }
         });
     }
@@ -122,4 +120,3 @@ var foodSubmit = $("#food-form").submit(function(e) { // change # to .
 });
 
 })
->>>>>>> 843c8cb91178de5330ff4f65151248d7e3ee270f
