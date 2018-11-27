@@ -87,4 +87,36 @@ $(document).ready(function(){
     }
     
 });
+var foodSubmit = $("#food-form").submit(function(e) { // change # to .
+    var searchTerms = $("#food-input").val(); // you should have #input_name
+    console.log("this is the usertext " + searchTerms);
+ 
+    $('#p').text(searchTerms); // text function takes value as parameter
+    e.preventDefault();  
+    function GetRecipe (){
+        var search = searchTerms;
+        var firstNum = 0;
+        var secondNum = 5;
+        var appid = "ec426dec";
+        var appkey = "93ae402db25814afafd557b63c007d31";
+        var queryURL = "https://api.edamam.com/search?q="+search+"&from=" + firstNum + "&to=" + secondNum + "&app_id="+appid+"&app_key="+appkey;
+        $.ajax({
+            url: queryURL,
+            method: "GET",  
+        }).then(function(response){
+            console.log(response);
+            var foods=response.hits;
+            for(var i = 0; i < foods.length ; i++){                                 
+            var recipeTest = response.hits[i].recipe.label;
+            var recipeingredientLines = response.hits[i].recipe.ingredientLines;
+
+            console.log (recipeTest);
+             $( "#foodPlace" ).append( `<div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
+            }
+        });
+    }
+        // getFood();
+         GetRecipe();
+});
+
 
