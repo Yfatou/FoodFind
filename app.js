@@ -23,6 +23,7 @@ var database = firebase.database();
 
 $(document).ready(function(){
 
+    $('.modal').modal('show');
     //var foodSubmit = $("#food-form").submit(function(e) { // change # to .
 
     //On Click event on the FindFood button.
@@ -116,7 +117,7 @@ var foodSubmit = $("#food-form").submit(function(e) { // change # to .
         });
     }
 
-    $('.modal').modal('show');
+    
     
         // getFood();
          GetRecipe();
