@@ -23,53 +23,69 @@ var database = firebase.database();
 
 $(document).ready(function(){
 
+    //var foodSubmit = $("#food-form").submit(function(e) { // change # to .
 
-//On Click event on the FindFood button.
-//The click on this button will trigger 
-$("#findFood").on("click", function(){
+    //On Click event on the FindFood button.
+    //The click on this button will trigger the search  
+    $("#findFood").on("click", function(){
+        event.preventDefault(); 
+    
+        //Call the reset function to empty the Div
+        reset();
 
-    //we put the value typed by the user (the ingredient for the recipe search)
-    var foodIngredient = $("#food-input").val().trim();
+        //the search value enterd by the user
+        var searchTerms = $("#food-input").val();
 
-    //Query to access the API website 
-    //the parameter will be the value entered by the user
-    var queryURL = "https://www.food2fork.com/api/search?key=6740d2e5100fbeb2e89ce579ed0828d4&q=" + foodIngredient;
+        //Control the value entered by the user
+        //The value entered should be a string
+        if (searchTerms == ""){//No value entered
+            //$("#wrongValueModal").modal("show");
+            alert("Please enter an ingredient to find recipes!");
+        } else if (Number(searchTerms)){//A number is entered
+            alert("The search term can't be a number!!");
+            $("#food-input").val("");
+        } else {//ADD A CONTROL TO MAKE SURE IT'S A STRING 
+            console.log("this is the usertext " + searchTerms);
+     
+            $('#p').text(searchTerms); // text function takes value as parameter
+         
+            //Function to get the recipes (5) from the API and display them in the Div
+            function GetRecipe (){
+                var search = searchTerms;
+                var firstNum = 0;
+                var secondNum = 5;
+                var appid = "ec426dec";
+                var appkey = "93ae402db25814afafd557b63c007d31";
+                var queryURL = "https://api.edamam.com/search?q="+search+"&from=" + firstNum + "&to=" + secondNum + "&app_id="+appid+"&app_key="+appkey;
+                console.log(queryURL);
 
-    console.log(queryURL);
-
-    //we use the ajax to access to the data returned by queryURL
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response){
-        //the qieryURL return an array of 30 objects. Each object is a recipe with information related to it
-        //Since we are only displaying the first 5 elements, we put them in an array named resultsFive
-        var resultsFive = response.slice(0,5);
-
-        for (var i = 0; i < resultsFive.length; i++){
-            //new div to display the recipe informations: title and link
-            var recipeLinksHolder = $("<div class='recipeLink'>");
-            //store the ID of the recipe. We will need it to display 
-            var recipeID = resultsFive[i].recipe_id;
-            //store the title of the recipe
-            var recipeTitle = $("<p>").text(resultsFive[i].title);
-            //stores the link of the recipe
-            var recipeLink = $("<p>").text(resultsFive[i].source_url);
-
-            //append the recipe informations to the div
-            recipeLinksHolder.append(recipeID);
-            recipeLinksHolder.append(recipeTitle);
-            recipeLinksHolder.append(recipeLink);
-
-            //append the hole recipe to the recipe holder div
-            $("#recipeHolder").prepend(recipeLinksHolder);
-        }
-
-
-        //when the user click on a recipe link
-
+                $.ajax({
+                    url: queryURL,
+                    method: "GET",  
+                }).then(function(response){
+                    console.log(response);
+                    var foods=response.hits;
+                    for(var i = 0; i < foods.length ; i++){                                 
+                        var recipeTest = response.hits[i].recipe.label;
+                        var recipeingredientLines = response.hits[i].recipe.ingredientLines;
+    
+                        console.log (recipeTest);
+                        //Display the recipes into the div
+                        $("#foodPlace").append( `<div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
+                    }
+                });
+            }
+            
+            GetRecipe();
+        }       
     });
 
+    //Function to reset the informations displayed in the recipe holder
+    function reset(){
+        $("#foodPlace").empty();
+        $("#recipeHolder").empty();
+    }
+    
 });
 var foodSubmit = $("#food-form").submit(function(e) { // change # to .
     var searchTerms = $("#food-input").val(); // you should have #input_name
@@ -95,7 +111,7 @@ var foodSubmit = $("#food-form").submit(function(e) { // change # to .
             var recipeingredientLines = response.hits[i].recipe.ingredientLines;
 
             console.log (recipeTest);
-             $( "#foodPlace" ).append( `<div> <p>${recipeTest}</p> ${recipeingredientLines}<div>`);
+             $( "#foodPlace" ).append( `<div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
             }
         });
     }
@@ -109,4 +125,4 @@ var foodSubmit = $("#food-form").submit(function(e) { // change # to .
     
 });
 
-})
+
