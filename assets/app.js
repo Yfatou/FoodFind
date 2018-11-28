@@ -44,14 +44,16 @@ function GetFoodWord() {
     var definition = response[0].shortdef[0];
 
     // appends the foodWords div to display the word and definition
-    $("#foodWords").append("<div>" + wordFromDictionary +  "</div>");
+    $("#foodWords").html("<div>" + wordFromDictionary +  "</div>");
     $("#foodWords").append("<div>" + definition +  "</div>");
+    
 
   });
 };
 
 GetFoodWord();
-    
+setInterval(GetFoodWord, 10000);
+
 
     // var wordDiv = $("<div id='foodWords'>").html("" + word);
 //       // display the rating in the rating div
