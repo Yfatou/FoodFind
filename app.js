@@ -94,6 +94,37 @@ $(document).ready(function(){
         }       
     });
 
+    // this is the function that is going to display a fun cooking word
+function GetFoodWord() {
+    // storing all our words in an array
+    var foodWords = ["al dente", "bisque", "canape", "flambe", "fricassee", "hors d'oeuvres", "julienne", "meuniere", "roux", "sous vide"];
+    // creating a variable that will randomly pick a word (eventually to be incorporated in an onclick function)
+    var randomItem = foodWords[Math.floor(Math.random() * foodWords.length)];
+    var apiKey = "?key=afc7c827-8f7f-4a2e-9e2d-fe20474a337b";
+    var queryURL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + randomItem + apiKey;
+    // logging this to get a better look at the JSON data
+    console.log(queryURL);
+  
+    // ajax call to the API
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (response) {
+      // logging the response to make sure its working, next step is to get the desired data to display in a div
+      console.log(response);
+      // storing the words and definitions in variables
+      var wordFromDictionary = response[0].hwi.hw;
+      var definition = response[0].shortdef[0];
+  
+      // appends the foodWords div to display the word and definition
+      $("#foodWords").append("<div>" + wordFromDictionary +  "</div>");
+      $("#foodWords").append("<div>" + definition +  "</div>");
+  
+    });
+  };
+  
+  GetFoodWord();
+
     //Function to reset the informations displayed in the recipe holder
     function reset(){
         $("#foodPlace").empty();
