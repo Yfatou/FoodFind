@@ -115,8 +115,14 @@ var foodSubmit = $("#food-form").submit(function(e) { // change # to .
             }
         });
     }
+
+    $('.modal').modal('show');
+    
         // getFood();
          GetRecipe();
+
+
+    
 });
 
 
