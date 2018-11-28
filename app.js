@@ -19,7 +19,6 @@ var database = firebase.database();
 
 $(document).ready(function(){
 
-
     //On Click event on the FindFood button.
     //The click on this button will trigger the search  
     $("#findFood").on("click", function(){
@@ -42,7 +41,9 @@ $(document).ready(function(){
             //A modal with a message is shown
             $("#wrongValueModal").modal("show");
             
+            //The input box is emptied
             $("#food-input").val("");
+            
         } else {//ADD A CONTROL TO MAKE SURE IT'S A STRING 
             console.log("this is the usertext " + searchTerms);
      
@@ -67,10 +68,11 @@ $(document).ready(function(){
                     for(var i = 0; i < foods.length ; i++){                                 
                         var recipeTest = response.hits[i].recipe.label;
                         var recipeingredientLines = response.hits[i].recipe.ingredientLines;
+                        var recipeImage = response.hits[i].recipe.image;
     
                         console.log (recipeTest);
                         //Display the recipes into the div
-                        $("#foodPlace").append( `<div> <p>${recipeTest}</p> ${recipeingredientLines}<div>`);
+                        $("#foodPlace").append( `<div><img src =${recipeImage}</img></div><div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
                     }
                 });
             }
@@ -86,4 +88,3 @@ $(document).ready(function(){
     }
     
 });
-
