@@ -71,7 +71,7 @@ $(document).ready(function(){
     
                         console.log (recipeTest);
                         //Display the recipes into the div
-                        $("#foodPlace").append( `<div> <p>${recipeTest}</p> ${recipeingredientLines}<div>`);
+                        $("#foodPlace").append( `<div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
                     }
                 });
             }
