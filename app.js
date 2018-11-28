@@ -69,10 +69,11 @@ $(document).ready(function(){
                     for(var i = 0; i < foods.length ; i++){                                 
                         var recipeTest = response.hits[i].recipe.label;
                         var recipeingredientLines = response.hits[i].recipe.ingredientLines;
+                        var recipeImage = response.hits[i].recipe.image;
     
                         console.log (recipeTest);
                         //Display the recipes into the div
-                        $("#foodPlace").append( `<div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
+                        $("#foodPlace").append( `<div><img src =${recipeImage}</img></div><div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
                     }
                 });
             }
