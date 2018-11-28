@@ -37,6 +37,15 @@ button{
   margin:auto;
 }
 
+.modal-backdrop{
+    opacity:.0.5 !important;
+}
+
+.modal-title{
+    font-family: 'Oleo Script', cursive;
+    font-size: 3em;
+}
+
 
 #foodPlace, #recipeHolder{
     flex: 50%;
