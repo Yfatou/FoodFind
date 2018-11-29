@@ -60,20 +60,19 @@ button{
     font-size: 3em;
 }
 .imageDisplay{
-    border: solid 2px gray;
     text-align: center;
+    background-color: white;
     }
 
 #foodPlace, #recipeHolder{
     
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-gap: 1rem;
+    grid-gap: 3rem;
     padding: 1em;
-    width: 80%;
+    width: 100%;
     height: 80%;
     overflow: auto;
-    background-color: white;
     font-family:'Yanone Kaffeesatz', sans-serif;
     justify-items: center;
 
