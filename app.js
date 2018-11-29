@@ -53,7 +53,7 @@ $(document).ready(function(){
             function GetRecipe (){
                 var search = searchTerms;
                 var firstNum = 0;
-                var secondNum = 5;
+                var secondNum = 6;
                 var appid = "ec426dec";
                 var appkey = "93ae402db25814afafd557b63c007d31";
                 var queryURL = "https://api.edamam.com/search?q="+search+"&from=" + firstNum + "&to=" + secondNum + "&app_id="+appid+"&app_key="+appkey;
@@ -64,15 +64,28 @@ $(document).ready(function(){
                     method: "GET",  
                 }).then(function(response){
                     console.log(response);
-                    var foods=response.hits;
+                    //The 5 recipes that we will display are stocked in a variable arrar
+                    var foods = response.hits;
                     for(var i = 0; i < foods.length ; i++){                                 
-                        var recipeTest = response.hits[i].recipe.label;
-                        var recipeingredientLines = response.hits[i].recipe.ingredientLines;
-                        var recipeImage = response.hits[i].recipe.image;
-    
-                        console.log (recipeTest);
-                        //Display the recipes into the div
-                        $("#foodPlace").append( `<div><img src =${recipeImage}</img></div><div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
+                        var recipeTest = response.hits[i].recipe.label;//Title of the recipe
+                        var recipeingredientLines = response.hits[i].recipe.ingredientLines;//Recipe ingredients
+                        var recipeImage = response.hits[i].recipe.image;//Recipe image
+                        
+                        var imageDiv = $("<div class='imageDisplay'>");//We create a new div to display the recipe image
+                        var pRecipeTitle = $("<h2>").text(recipeTest);
+                        var pRecipeIngredients = $("<div id = 'recipeText'>").text(recipeingredientLines);
+                        var image = $("<img>");//New image to store the recipe image
+                        image.attr("src", recipeImage);
+
+                         //Append the recipes informations in the newly created div
+                        imageDiv.append(pRecipeTitle);
+                        imageDiv.append(image);
+                        imageDiv.append(pRecipeIngredients);
+                  
+
+                        //Display the recipes in the div
+                        $("#foodPlace").append(imageDiv);
+                        //$("#foodPlace").append( `<div><img src =${recipeImage}</img></div><div> <h2>${recipeTest}</h2> <p>${recipeingredientLines}</p><div>`);
                     }
                 });
             }
@@ -81,6 +94,37 @@ $(document).ready(function(){
         }       
     });
 
+    // this is the function that is going to display a fun cooking word
+function GetFoodWord() {
+    // storing all our words in an array
+    var foodWords = ["al dente", "bisque", "canape", "flambe", "fricassee", "hors d'oeuvres", "julienne", "meuniere", "roux", "sous vide"];
+    // creating a variable that will randomly pick a word (eventually to be incorporated in an onclick function)
+    var randomItem = foodWords[Math.floor(Math.random() * foodWords.length)];
+    var apiKey = "?key=afc7c827-8f7f-4a2e-9e2d-fe20474a337b";
+    var queryURL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + randomItem + apiKey;
+    // logging this to get a better look at the JSON data
+    console.log(queryURL);
+  
+    // ajax call to the API
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function (response) {
+      // logging the response to make sure its working, next step is to get the desired data to display in a div
+      console.log(response);
+      // storing the words and definitions in variables
+      var wordFromDictionary = response[0].hwi.hw;
+      var definition = response[0].shortdef[0];
+  
+      // appends the foodWords div to display the word and definition
+      $("#foodWords").html(`<div> <h2 id = "headword"> ${wordFromDictionary}</h2></div> <div> <p id ="definition"> ${definition}</p> </div>`);
+    //   $("#foodWords").append("<div>" + definition +  "</div>");
+  
+    });
+  };
+  
+  GetFoodWord();
+  setInterval(GetFoodWord, 7000);
     //Function to reset the informations displayed in the recipe holder
     function reset(){
         $("#foodPlace").empty();
