@@ -1,11 +1,25 @@
-h1{margin: 1em;}
+h1{
+    margin: 1em;
+}
 
-body{  background-image: url(/Project_1/images/Chicken_img.jpeg);
+h2{ 
+    font-family: 'Oleo Script', cursive;
+    font-size: 3em;
+    margin-top: 1em;
+}
+
+p{
+    font-size: 2em;}
+
+body{  
+    background-image: url(/Project_1/images/Chicken_img.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     
 }
+
 button{
+    font-family:'Yanone Kaffeesatz', sans-serif;
     color: white ;
     text-transform: uppercase;
     background:gray;
@@ -17,12 +31,10 @@ button{
 }
 
 .h1Wrap{
-
+    height: 300px;
     font-family: 'Oleo Script', cursive;
     background-color: white;
     display:flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: baseline;
 
 }
@@ -38,24 +50,29 @@ button{
 }
 
 .modal-backdrop{
-    opacity:.0.5 !important;
+    opacity:0.5 !important;
 }
 
 .modal-title{
     font-family: 'Oleo Script', cursive;
     font-size: 3em;
 }
-
+.imageDisplay{
+    text-align: center;
+    background-color: white;
+    }
 
 #foodPlace, #recipeHolder{
-    flex: 50%;
-    width: 30%;
-    height: 50%;
+    
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 3rem;
+    padding: 1em;
+    width: 100%;
+    height: 80%;
     overflow: auto;
-    padding: 10px;
-    margin: 10px;
-    background-color: white;
     font-family:'Yanone Kaffeesatz', sans-serif;
+    justify-items: center;
 
 
 }
@@ -68,12 +85,28 @@ button{
     text-align: center;
     margin: 1em;
 }
+#recipeText {
+    text-align: left;
+    padding: .2em;
+    font-size: 2em;
+
+}
 
 #foodWords {
-text-align:center;
-border: solid 2px red;
-width: 30%;
-height: 15%;
-margin: 1em;
+    text-align:center;
+    width: 40%;
+    height: 15%;
+    margin: 1em;
+    margin-right: auto;
+
+}
+
+#headword{
+    font-family: 'Oleo Script', cursive;
+    font-size: 3em;
+}
+
+#definition{
+    font-family:'Yanone Kaffeesatz', sans-serif;
 
 }
