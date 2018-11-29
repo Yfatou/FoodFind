@@ -117,7 +117,7 @@ function GetFoodWord() {
       var definition = response[0].shortdef[0];
   
       // appends the foodWords div to display the word and definition
-      $("#foodWords").html(`<div> <h2 id = "headword"> ${wordFromDictionary}</h2></div> <div> <p id ="definition"> ${definition}</p> </div>`);
+      $("#foodWords").html(`<h2 id = "headword"> ${wordFromDictionary}</h2> <p id ="definition"> ${definition}</p>`);
     //   $("#foodWords").append("<div>" + definition +  "</div>");
   
     });

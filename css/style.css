@@ -35,8 +35,6 @@ button{
     font-family: 'Oleo Script', cursive;
     background-color: white;
     display:flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: baseline;
 
 }
@@ -99,6 +97,7 @@ button{
     width: 40%;
     height: 15%;
     margin: 1em;
+    margin-right: auto;
 
 }
 
