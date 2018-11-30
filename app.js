@@ -55,7 +55,12 @@ $(document).ready(function(){
     
     // create firbase event for adding user to the database
     database.ref().on("child_added", function(childSnapshot) {
-        console.log(childSnapshot.val());
+
+            console.log(childSnapshot.val());
+    
+    orangeFormname = childSnapshot.val().name;
+    orangeFormemail = childSnapshot.val().email;
+
     
         var orangeFormname = childSnapshot.val().name;
         var orangeFormemail = childSnapshot.val().email;
