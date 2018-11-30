@@ -19,6 +19,59 @@ var database = firebase.database();
 
 $(document).ready(function(){
 
+    $("#modal").modal("show");
+
+    //My code for Original Pop up Modal
+    // capture the button click
+    $("#submit").on("click" , function(event){
+        event.preventDefault();
+    
+        // grabs input
+        var orangeFormname = $("#orangeForm-name").val().trim();
+        var orangeFormemail = $("#orangeForm-email").val().trim();
+    
+        //Which variables will we need??
+    
+        var newUser = {
+            name: orangeFormname,
+            email: orangeFormemail
+        };
+    
+    
+    // uploads user data to the database
+    database.ref().push(newUser);
+    
+    // logs everything to the console
+    console.log(newUser.name);
+    console.log(newUser.email);
+    
+        // clears all of the text-boxes
+        $("#orangeForm-name").val("");
+        $("#orangeForm-email").val("");
+
+    }); 
+    
+    
+    
+    // create firbase event for adding user to the database
+    database.ref().on("child_added", function(childSnapshot) {
+
+            console.log(childSnapshot.val());
+    
+    orangeFormname = childSnapshot.val().name;
+    orangeFormemail = childSnapshot.val().email;
+
+    
+        var orangeFormname = childSnapshot.val().name;
+        var orangeFormemail = childSnapshot.val().email;
+    
+        // User Info
+        //console.log(name);
+        //console.log(email);
+  
+    });
+
+
     //On Click event on the FindFood button.
     //The click on this button will trigger the search  
     $("#findFood").on("click", function(){
@@ -53,7 +106,7 @@ $(document).ready(function(){
             function GetRecipe (){
                 var search = searchTerms;
                 var firstNum = 0;
-                var secondNum = 5;
+                var secondNum = 6;
                 var appid = "ec426dec";
                 var appkey = "93ae402db25814afafd557b63c007d31";
                 var queryURL = "https://api.edamam.com/search?q="+search+"&from=" + firstNum + "&to=" + secondNum + "&app_id="+appid+"&app_key="+appkey;
@@ -70,10 +123,13 @@ $(document).ready(function(){
                         var recipeTest = response.hits[i].recipe.label;//Title of the recipe
                         var recipeingredientLines = response.hits[i].recipe.ingredientLines;//Recipe ingredients
                         var recipeImage = response.hits[i].recipe.image;//Recipe image
+                        var recipeLink = response.hits[i].recipe.url;
                         
                         var imageDiv = $("<div class='imageDisplay'>");//We create a new div to display the recipe image
                         var pRecipeTitle = $("<h2>").text(recipeTest);
                         var pRecipeIngredients = $("<p>").text(recipeingredientLines);
+                        //var hRecipeLink = $("<h>").text("Preparation");
+                        var hRecipeLink = "Preparation";
                         var image = $("<img>");//New image to store the recipe image
                         image.attr("src", recipeImage);
 
@@ -81,6 +137,7 @@ $(document).ready(function(){
                         imageDiv.append(pRecipeTitle);
                         imageDiv.append(image);
                         imageDiv.append(pRecipeIngredients);
+                        imageDiv.append(hRecipeLink.link(recipeLink));
                   
 
                         //Display the recipes in the div
@@ -97,7 +154,7 @@ $(document).ready(function(){
     // this is the function that is going to display a fun cooking word
 function GetFoodWord() {
     // storing all our words in an array
-    var foodWords = ["al dente", "bisque", "canape", "flambe", "fricassee", "hors d'oeuvres", "julienne", "meuniere", "roux", "sous vide"];
+    var foodWords = ["al dente", "bisque", "canape", "flambe", "fricassee", "hors d'oeuvres", "julienne", "meuniere", "roux"];
     // creating a variable that will randomly pick a word (eventually to be incorporated in an onclick function)
     var randomItem = foodWords[Math.floor(Math.random() * foodWords.length)];
     var apiKey = "?key=afc7c827-8f7f-4a2e-9e2d-fe20474a337b";
