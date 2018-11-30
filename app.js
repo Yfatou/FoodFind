@@ -58,8 +58,8 @@ $(document).ready(function(){
     database.ref().on("child_added", function(childSnapshot) {
             console.log(childSnapshot.val());
     
-    var orangeFormname = childSnapshot.val().name;
-    var orangeFormemail = childSnapshot.val().email;
+    orangeFormname = childSnapshot.val().name;
+    orangeFormemail = childSnapshot.val().email;
     
             // User Info
     console.log(name);
