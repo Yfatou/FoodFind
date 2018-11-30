@@ -1,5 +1,4 @@
 h1{
-    
     padding: 1em;
     font-size: 2em;
 }
@@ -78,7 +77,6 @@ button{
     
 }
 #foodPlace, #recipeHolder{
-    
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-gap: 3rem;
@@ -115,7 +113,6 @@ button{
     font-size: 1.5em;
 }
 #definition{
-    
     font-family:'Yanone Kaffeesatz', sans-serif;
 }
 
