@@ -145,7 +145,7 @@ $(document).ready(function(){
     // this is the function that is going to display a fun cooking word
 function GetFoodWord() {
     // storing all our words in an array
-    var foodWords = ["al dente", "bisque", "canape", "flambe", "fricassee", "hors d'oeuvres", "julienne", "meuniere", "roux", "sous vide"];
+    var foodWords = ["al dente", "bisque", "canape", "flambe", "fricassee", "hors d'oeuvres", "julienne", "meuniere", "roux"];
     // creating a variable that will randomly pick a word (eventually to be incorporated in an onclick function)
     var randomItem = foodWords[Math.floor(Math.random() * foodWords.length)];
     var apiKey = "?key=afc7c827-8f7f-4a2e-9e2d-fe20474a337b";
