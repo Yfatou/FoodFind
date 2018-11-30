@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Food finds</title>
 
-    <!-- CSS file -->
-    <link rel="stylesheet" href="/Project_1/css/style.css">
-
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script|Yanone+Kaffeesatz:300" rel="stylesheet">
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <!-- CSS file -->
+     <link rel="stylesheet" href="/Project_1/css/style.css">
+
+     <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script|Yanone+Kaffeesatz:300" rel="stylesheet">
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -24,7 +25,7 @@
 <body>
 <div class ="h1Wrap">
     <h1>Food Finds </h1>
-    <img src="/Project_1/images/turkey-vector-silhouette-2.png" width ="35px" height="35px">
+    <img src="/Project_1/images/turkey-vector-silhouette-2.png" alt ="turkey">
         <input type="text" id="food-input" placeholder ="What do you want to cook tonight?">
         <button id="findFood">Find some recipes</button>
         <div id ="foodWords"> </div>
@@ -32,12 +33,11 @@
 
 <div class="wrapper">
     <div id="foodPlace"></div> <!--end foodPlace -->
-    <div id="recipeHolder">Wine pairings or other info will go here</div><!--end recipe holder -->
 </div> <!--end wrapper -->
 
 <!-- Modal to be used when the value entered by the user is not correct -->
-<!-- <div class="modal fade" id="wrongValueModal" role="dialog">
-    <div class="modal-dialog modal-dialog-centered">
+<div class="modal" id="wrongValueModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Wrong Value</h5>
@@ -46,22 +46,54 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Please enter an ingredient to find recipes!</p>
+          <p>Please enter a food and you'll get recipes!!</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
+  
+  <!-- create modal for Name and Email/make modifications in css for it-->
+  <!-- this is the basic skeleton of the modal//make code that centers it on page and code something that saves the email and name to firebase -->
+  <div class="modal" id="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Sign up for NewsLetter!! UwU</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                                <div class="md-form mb-5">
+                                  <input type="text" id="orangeForm-name" class="form-control validate">
+                                  <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+                                
+                                          <input type="text" id="orangeForm-email" class="form-control validate">
+                                          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+                                        </div>
+                                    </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" id="submit">Submit</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
   
 
 <!-- JQUERY library -->
 <script src="https://code.jquery.com/jquery.js"></script>  
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Javascript file -->
 <script src="app.js"></script>
 
 </body>
 
+
 </html>
+

@@ -1,15 +1,33 @@
-h1{margin: 1em;}
+h1{
+    
+    padding: 1em;
+    font-size: 1.5em;
 
-body{  background-image: url(/Project_1/images/Chicken_img.jpeg);
+}
+
+h2{ 
+    font-family: 'Oleo Script', cursive;
+    font-size: 2em;
+    margin-top: 1em;
+}
+
+p{
+    font-size: 1em;
+}
+
+body{  
+    background-image: url(/Project_1/images/Chicken_img.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    
+    background-attachment:fixed;
 }
+
 button{
+    font-family:'Yanone Kaffeesatz', sans-serif;
     color: white ;
     text-transform: uppercase;
     background:gray;
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
     display: inline-block;
     border: none;
@@ -17,12 +35,10 @@ button{
 }
 
 .h1Wrap{
-
+    height: 20%;
     font-family: 'Oleo Script', cursive;
     background-color: white;
     display:flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: baseline;
 
 }
@@ -33,20 +49,35 @@ button{
   justify-content: center;
   align-items: center;
   height: 700px;
-  width: 75%;
+  width: 85%;
   margin:auto;
 }
 
+.modal-backdrop{
+    opacity:0.5 !important;
+}
+
+.modal-title{
+    font-family: 'Oleo Script', cursive;
+    font-size: 3em;
+}
+.imageDisplay{
+    text-align: center;
+    background-color: white;
+    
+}
 
 #foodPlace, #recipeHolder{
-    flex: 50%;
-    width: 30%;
-    height: 50%;
-    overflow: auto;
-    padding: 10px;
-    margin: 10px;
-    background-color: white;
+    
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 3rem;
+    padding: 1em;
+    width: 100%;
+    height: 80%;
+    /* overflow: auto; */
     font-family:'Yanone Kaffeesatz', sans-serif;
+    justify-items: center;
 
 
 }
@@ -55,16 +86,32 @@ button{
     width: 30%;
     height: 15%;
     font-family:'Yanone Kaffeesatz', sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
     margin: 1em;
 }
+#recipeText {
+    text-align: left;
+    padding: .2em;
+    font-size: 2em;
+
+}
 
 #foodWords {
-text-align:center;
-border: solid 2px red;
-width: 30%;
-height: 15%;
-margin: 1em;
+    text-align:center;
+    width: 40%;
+    /* height: 15%; */
+    margin: 1em;
+    margin-right: auto;
+
+}
+
+#headword{
+    font-family: 'Oleo Script', cursive;
+    font-size: 1.5em;
+}
+
+#definition{
+    font-family:'Yanone Kaffeesatz', sans-serif;
 
 }
