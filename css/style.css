@@ -115,3 +115,8 @@ button{
     font-family:'Yanone Kaffeesatz', sans-serif;
 
 }
+
+#innerh1Wrap{
+
+    display:flex;
+}
