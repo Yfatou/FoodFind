@@ -18,6 +18,54 @@ var database = firebase.database();
 
 
 $(document).ready(function(){
+    $("#modal").modal("show");
+
+
+    //My code for Original Pop up Modal
+    // capture the button click
+    $("#submit").on("click" , function(event){
+      event.preventDefault();
+    
+    // grabs input
+    var orangeFormname = $("#orangeForm-name").val().trim();
+    var orangeFormemail = $("#orangeForm-email").val().trim();
+    
+    //Which variables will we need??
+    
+    var newUser = {
+        name: orangeFormname,
+        email: orangeFormemail
+    };
+    
+    
+    // uploads user data to the database
+    database.ref().push(newUser);
+    
+    // logs everything to the console
+    console.log(newUser.name);
+    console.log(newUser.email);
+    
+    // clears all of the text-boxes
+    $("#orangeForm-name").val("");
+    $("#orangeForm-email").val("");
+    }); 
+    
+    });
+    
+    
+    
+    // create firbase event for adding user to the database
+    database.ref().on("child_added", function(childSnapshot) {
+            console.log(childSnapshot.val());
+    
+    var orangeFormname = childSnapshot.val().name;
+    var orangeFormemail = childSnapshot.val().email;
+    
+            // User Info
+    console.log(name);
+    console.log(email);
+    //end for Zhesi's code fore popup modal for firebase database
+    
 
     //On Click event on the FindFood button.
     //The click on this button will trigger the search  
