@@ -10,3 +10,15 @@ Food Finds is great for anyone looking for new ideas, people on the go or even t
 We care about the art of cooking so much that in the header we also display useful cooking terms to provide you with some extra knowledge that may come in handy when you find your recipe and are ready to create your masterpiece!
 
 If you would like to give us your name and email we will put you on a mailing list with special offers that will be coming very soon!
+
+
+##Technologies Used
+
+* Bootstrap
+* CSS FlexBox
+* CSS Grid
+* Firebase
+* JavaScript
+* JQuery
+* [EDAMAM API (follow link for documentation)](https://developer.edamam.com/edamam-docs-recipe-api)
+* [Merriam-Webster Dictionary API (follow link for documentation)] (https://dictionaryapi.com/products/json)
