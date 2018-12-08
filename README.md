@@ -22,3 +22,6 @@ If you would like to give us your name and email we will put you on a mailing li
 * JQuery
 * [EDAMAM API (follow link for documentation)](https://developer.edamam.com/edamam-docs-recipe-api)
 * [Merriam-Webster Dictionary API (follow link for documentation)] (https://dictionaryapi.com/products/json)
+
+
+To see the deployed version of this project visit: https://emilyedalton.github.io/Project_1/
