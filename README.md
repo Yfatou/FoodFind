@@ -12,7 +12,7 @@ We care about the art of cooking so much that in the header we also display usef
 If you would like to give us your name and email we will put you on a mailing list with special offers that will be coming very soon!
 
 
-##Technologies Used
+## Technologies Used
 
 * Bootstrap
 * CSS FlexBox
