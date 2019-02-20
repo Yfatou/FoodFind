@@ -1,4 +1,4 @@
-# Project_1
+# Food Finds
 Welcome to Food Finds!
 
 Using it, you can easily search for and find any recipe related to almost any type of food that you desire!
